@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard · Smart Mentor Demo</title>
+  <meta name="description" content="Interactive Smart Mentor student dashboard demo: daily action plan, weekly planner, goals, career discovery, skill builder, portfolio, resume builder, and interview practice.">
+  <meta name="theme-color" content="#172554">
+  <script>
+    /* Runs before the page draws: signed-out visitors go straight to the login page. */
+    (function () {
+      function valid(store) {
+        try { var s = JSON.parse(store.getItem('smartMentor.session.v1') || 'null'); return !!(s && s.id && s.exp > Date.now()); } catch (e) { return false; }
+      }
+      var ok = false;
+      try { ok = valid(sessionStorage) || valid(localStorage); } catch (e) { ok = false; }
+      if (!ok) { var v = location.hash.slice(1); location.replace('login.html' + (/^[a-z]+$/.test(v) ? '?next=' + v : '')); }
+    })();
+  </script>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body data-page="dashboard" class="app-body">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="app">
+    <!-- ===================== SIDEBAR ===================== -->
+    <aside class="sidebar" id="sidebar" aria-label="Dashboard navigation">
+      <div class="sidebar-top">
+        <a class="logo" href="index.html" aria-label="Smart Mentor home">
+          <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#172554"/><path d="M16 5.5 19.4 16H12.6Z" fill="#8B5CF6"/><path d="M12.6 16h6.8L16 26.5Z" fill="#fff"/><circle cx="16" cy="16" r="1.7" fill="#172554"/></svg>
+          <span>Smart Mentor</span>
+        </a>
+        <button class="btn-icon sidebar-close" type="button" data-close-sidebar aria-label="Close navigation"><i data-lucide="x" aria-hidden="true"></i></button>
+      </div>
+      <nav class="sidebar-nav" aria-label="Workspace">
+        <a href="#overview" data-view-link="overview"><i data-lucide="layout-dashboard" aria-hidden="true"></i><span>Overview</span></a>
+        <a href="#planner" data-view-link="planner"><i data-lucide="calendar-days" aria-hidden="true"></i><span>My Study Planner</span></a>
+        <a href="#goals" data-view-link="goals"><i data-lucide="target" aria-hidden="true"></i><span>Goals</span></a>
+        <a href="#career" data-view-link="career"><i data-lucide="compass" aria-hidden="true"></i><span>My Major &amp; Career</span></a>
+        <a href="#skills" data-view-link="skills"><i data-lucide="hammer" aria-hidden="true"></i><span>Skill Builder</span></a>
+        <a href="#portfolio" data-view-link="portfolio"><i data-lucide="folder-open" aria-hidden="true"></i><span>Projects &amp; Portfolio</span></a>
+        <a href="#resume" data-view-link="resume"><i data-lucide="file-text" aria-hidden="true"></i><span>Resume Builder</span></a>
+        <a href="#interview" data-view-link="interview"><i data-lucide="mic" aria-hidden="true"></i><span>Interview Practice</span></a>
+        <a href="#settings" data-view-link="settings"><i data-lucide="settings" aria-hidden="true"></i><span>Settings</span></a>
+      </nav>
+      <div class="sidebar-foot">
+        <div class="user-chip">
+          <span class="avatar" id="sb-avatar" aria-hidden="true">A</span>
+          <div><strong id="sb-name">Alex</strong><small id="sb-meta">Computer Science · Sophomore</small></div>
+        </div>
+        <button class="btn btn-ghost btn-sm btn-block sidebar-logout" type="button" data-action="logout"><i data-lucide="log-out" aria-hidden="true"></i> Log out</button>
+        <p class="demo-note"><i data-lucide="hard-drive" aria-hidden="true"></i> Your workspace is saved on this device.</p>
+      </div>
+    </aside>
+    <div class="scrim" data-close-sidebar hidden></div>
+
+    <div class="app-main">
+      <header class="topbar">
+        <button class="btn-icon menu-btn" id="open-sidebar" type="button" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false"><i data-lucide="menu" aria-hidden="true"></i></button>
+        <div class="topbar-title">
+          <h1 id="view-title">Overview</h1>
+          <p id="today-label"></p>
+        </div>
+        <div class="topbar-actions">
+          <span class="badge badge-demo" id="demo-badge" hidden title="You're viewing the sample demo account."><i data-lucide="eye" aria-hidden="true"></i> Demo account</span>
+          <a class="btn btn-secondary btn-sm topbar-site" href="index.html"><i data-lucide="arrow-left" aria-hidden="true"></i> Back to site</a>
+        </div>
+      </header>
+
+      <main id="main" class="app-content" tabindex="-1">
+        <div class="demo-banner" id="demo-banner" hidden>
+          <i data-lucide="eye" aria-hidden="true"></i>
+          <p>You're exploring the <strong>demo account</strong> with sample student Alex. Want your own workspace?</p>
+          <button class="btn btn-primary btn-sm" type="button" data-action="logout">Create my account</button>
+        </div>
+
+        <!-- ========== OVERVIEW ========== -->
+        <section class="view" data-view="overview" aria-label="Overview">
+          <div id="overview-root"></div>
+        </section>
+
+        <!-- ========== PLANNER ========== -->
+        <section class="view" data-view="planner" aria-labelledby="planner-h" hidden>
+          <div class="view-head">
+            <div>
+              <h2 id="planner-h">My Study Planner</h2>
+              <p>Plan your week across classes, deadlines, skill building, and rest.</p>
+            </div>
+          </div>
+
+          <form class="card form-card" id="task-form" novalidate>
+            <h3 class="card-title"><i data-lucide="plus-circle" aria-hidden="true"></i> Add a task</h3>
+            <div class="form-grid form-grid-task">
+              <div class="field field-title">
+                <label for="task-title">Task title</label>
+                <input id="task-title" name="title" type="text" maxlength="80" placeholder="e.g., Review chapter 5 notes" required>
+              </div>
+              <div class="field">
+                <label for="task-category">Category</label>
+                <select id="task-category" name="category"></select>
+              </div>
+              <div class="field">
+                <label for="task-date">Date</label>
+                <input id="task-date" name="date" type="date" required>
+              </div>
+              <div class="field">
+                <label for="task-minutes">Est. minutes</label>
+                <input id="task-minutes" name="minutes" type="number" min="5" max="480" step="5" value="30" inputmode="numeric" required>
+              </div>
+              <div class="field field-notes">
+                <label for="task-desc">Notes <span class="optional">(optional)</span></label>
+                <input id="task-desc" name="desc" type="text" maxlength="160" placeholder="e.g., Problems 3–6 on linked lists">
+              </div>
+              <div class="field field-submit">
+                <button class="btn btn-primary btn-block" type="submit"><i data-lucide="plus" aria-hidden="true"></i> Add task</button>
+              </div>
+            </div>
+          </form>
+
+          <div class="card planner-card">
+            <div class="planner-toolbar">
+              <div class="week-nav">
+                <button class="btn-icon" type="button" data-action="week-prev" aria-label="Previous week"><i data-lucide="chevron-left" aria-hidden="true"></i></button>
+                <h3 id="week-label" aria-live="polite">This week</h3>
+                <button class="btn-icon" type="button" data-action="week-next" aria-label="Next week"><i data-lucide="chevron-right" aria-hidden="true"></i></button>
+                <button class="btn btn-secondary btn-sm" type="button" data-action="week-today">This week</button>
+              </div>
+              <p class="planner-summary" id="week-summary"></p>
+            </div>
+            <div class="week-grid" id="week-grid"></div>
+          </div>
+        </section>
+
+        <!-- ========== GOALS ========== -->
+        <section class="view" data-view="goals" aria-labelledby="goals-h" hidden>
+          <div class="view-head">
+            <div>
+              <h2 id="goals-h">Goals</h2>
+              <p>Set clear targets for your semester and track progress as you go.</p>
+            </div>
+          </div>
+          <div class="split-layout">
+            <form class="card form-card" id="goal-form" novalidate>
+              <h3 class="card-title"><i data-lucide="target" aria-hidden="true"></i> Add a goal</h3>
+              <div class="field">
+                <label for="goal-title">Goal</label>
+                <input id="goal-title" name="title" type="text" maxlength="90" placeholder="e.g., Finish 10 skill challenges" required>
+              </div>
+              <div class="field">
+                <label for="goal-category">Category</label>
+                <select id="goal-category" name="category"></select>
+              </div>
+              <div class="field">
+                <label for="goal-target">Target date</label>
+                <input id="goal-target" name="target" type="date" required>
+              </div>
+              <div class="field">
+                <label for="goal-progress">Starting progress: <output id="goal-progress-out" for="goal-progress">0%</output></label>
+                <input id="goal-progress" name="progress" type="range" min="0" max="100" step="5" value="0">
+              </div>
+              <button class="btn btn-primary btn-block" type="submit"><i data-lucide="plus" aria-hidden="true"></i> Add goal</button>
+            </form>
+            <div>
+              <div class="toolbar">
+                <div class="segmented" role="group" aria-label="Filter goals" id="goal-filters">
+                  <button type="button" data-action="goal-filter" data-filter="active" aria-pressed="true">Active</button>
+                  <button type="button" data-action="goal-filter" data-filter="done" aria-pressed="false">Completed</button>
+                  <button type="button" data-action="goal-filter" data-filter="all" aria-pressed="false">All</button>
+                </div>
+                <p class="muted small" id="goal-summary"></p>
+              </div>
+              <ul class="goal-list" id="goal-list"></ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========== CAREER ========== -->
+        <section class="view" data-view="career" aria-labelledby="career-h" hidden>
+          <div class="view-head">
+            <div>
+              <h2 id="career-h">My Major &amp; Career</h2>
+              <p>Pick a major to see example career directions, skills, projects, and next steps.</p>
+            </div>
+          </div>
+          <div class="chip-picker" role="group" aria-label="Choose a major" id="major-picker"></div>
+          <div id="career-panel"></div>
+        </section>
+
+        <!-- ========== SKILLS ========== -->
+        <section class="view" data-view="skills" aria-labelledby="skills-h" hidden>
+          <div class="view-head">
+            <div>
+              <h2 id="skills-h">Daily Skill Builder</h2>
+              <p>Short, practical challenges that turn what you study into what you can do.</p>
+            </div>
+          </div>
+          <div class="chip-picker" role="group" aria-label="Choose a learning track" id="track-picker"></div>
+          <div id="skills-summary"></div>
+          <div class="challenge-grid" id="challenge-list"></div>
+        </section>
+
+        <!-- ========== PORTFOLIO ========== -->
+        <section class="view" data-view="portfolio" aria-labelledby="portfolio-h" hidden>
+          <div class="view-head">
+            <div>
+              <h2 id="portfolio-h">Projects &amp; Portfolio</h2>
+              <p>Record what you built and learned so it's ready for your resume and interviews.</p>
+            </div>
+            <button class="btn btn-secondary" type="button" data-action="preview-portfolio"><i data-lucide="eye" aria-hidden="true"></i> Preview portfolio</button>
+          </div>
+          <div class="split-layout">
+            <form class="card form-card" id="project-form" novalidate>
+              <h3 class="card-title" id="project-form-title"><i data-lucide="folder-plus" aria-hidden="true"></i> Add a project</h3>
+              <div class="field">
+                <label for="project-name">Project name</label>
+                <input id="project-name" name="name" type="text" maxlength="80" placeholder="e.g., Campus Event Budget Model" required>
+              </div>
+              <div class="field">
+                <label for="project-desc">What did you build or learn?</label>
+                <textarea id="project-desc" name="desc" rows="4" maxlength="500" placeholder="Describe the problem, what you did, and the result." required></textarea>
+              </div>
+              <fieldset class="field">
+                <legend>Relevant skills</legend>
+                <div class="skill-checks" id="project-skills"></div>
+              </fieldset>
+              <div class="field">
+                <label for="project-other">Other skills <span class="optional">(comma-separated)</span></label>
+                <input id="project-other" name="other" type="text" maxlength="120" placeholder="e.g., Canva, Public speaking">
+              </div>
+              <div class="field">
+                <label for="project-date">Completion date</label>
+                <input id="project-date" name="date" type="date" required>
+              </div>
+              <div class="form-actions">
+                <button class="btn btn-primary" type="submit" id="project-submit"><i data-lucide="plus" aria-hidden="true"></i> Add project</button>
+                <button class="btn btn-ghost" type="button" data-action="cancel-edit-project" id="project-cancel" hidden>Cancel</button>
+              </div>
+            </form>
+            <div class="portfolio-grid" id="project-list"></div>
+          </div>
+        </section>
+
+        <!-- ========== RESUME ========== -->
+        <section class="view" data-view="resume" aria-labelledby="resume-h" hidden>
+          <div class="view-head">
+            <div>
+              <h2 id="resume-h">Resume Builder</h2>
+              <p>Fill in your details and watch your resume format itself. This is a formatting tool — no AI analysis.</p>
+            </div>
+            <div class="head-actions">
+              <button class="btn btn-secondary" type="button" data-action="import-projects"><i data-lucide="download" aria-hidden="true"></i> Import portfolio projects</button>
+              <button class="btn btn-primary" type="button" data-action="print-resume"><i data-lucide="printer" aria-hidden="true"></i> Print / Save as PDF</button>
+            </div>
+          </div>
+          <div class="resume-layout">
+            <form class="card form-card resume-form" id="resume-form" novalidate>
+              <h3 class="card-title"><i data-lucide="user" aria-hidden="true"></i> Basics</h3>
+              <div class="form-grid form-grid-2">
+                <div class="field"><label for="r-fullName">Full name</label><input id="r-fullName" data-resume="fullName" type="text" maxlength="60" autocomplete="name" placeholder="Your full name"></div>
+                <div class="field"><label for="r-headline">Professional headline</label><input id="r-headline" data-resume="headline" type="text" maxlength="90" placeholder="e.g., Computer Science Student | Aspiring Developer"></div>
+                <div class="field"><label for="r-email">Email</label><input id="r-email" data-resume="email" type="email" maxlength="80" autocomplete="email" placeholder="you@example.com"></div>
+                <div class="field"><label for="r-phone">Phone</label><input id="r-phone" data-resume="phone" type="tel" maxlength="30" autocomplete="tel" placeholder="(555) 555-5555"></div>
+                <div class="field"><label for="r-location">City, State</label><input id="r-location" data-resume="location" type="text" maxlength="60" placeholder="City, ST"></div>
+                <div class="field"><label for="r-link">Portfolio or LinkedIn URL</label><input id="r-link" data-resume="link" type="text" maxlength="120" placeholder="linkedin.com/in/your-profile"></div>
+              </div>
+              <p class="form-hint"><i data-lucide="info" aria-hidden="true"></i> For each section below, separate entries with a blank line. The first line of an entry is its title; following lines become bullet points.</p>
+              <div class="field"><label for="r-education">Education</label><textarea id="r-education" data-resume="education" rows="4" placeholder="University Name — B.S. in Your Major, Expected May 2028&#10;Relevant coursework: …&#10;GPA (optional): …"></textarea></div>
+              <div class="field"><label for="r-skills">Skills <span class="optional">(comma-separated)</span></label><textarea id="r-skills" data-resume="skills" rows="2" placeholder="e.g., Python, Excel, Public speaking"></textarea></div>
+              <div class="field"><label for="r-projects">Projects</label><textarea id="r-projects" data-resume="projects" rows="5" placeholder="Project Name (Month Year)&#10;What you built and the result&#10;Tools or skills used"></textarea></div>
+              <div class="field"><label for="r-experience">Experience</label><textarea id="r-experience" data-resume="experience" rows="5" placeholder="Role — Organization (Start – End)&#10;Something you accomplished, ideally with a result"></textarea></div>
+              <div class="field"><label for="r-activities">Activities &amp; Volunteering</label><textarea id="r-activities" data-resume="activities" rows="4" placeholder="Role — Club or Organization (Dates)&#10;What you contributed"></textarea></div>
+              <div class="form-actions"><button class="btn btn-ghost btn-danger" type="button" data-action="clear-resume"><i data-lucide="rotate-ccw" aria-hidden="true"></i> Clear resume</button></div>
+            </form>
+            <div class="resume-preview-wrap">
+              <p class="preview-label"><i data-lucide="eye" aria-hidden="true"></i> Live preview</p>
+              <article class="resume-paper" id="resume-paper" aria-label="Resume preview"></article>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========== INTERVIEW ========== -->
+        <section class="view" data-view="interview" aria-labelledby="interview-h" hidden>
+          <div class="view-head">
+            <div>
+              <h2 id="interview-h">Interview Practice</h2>
+              <p>Choose a category, reveal a question, write your answer, then review it with a structured checklist.</p>
+            </div>
+          </div>
+          <div class="chip-picker" role="group" aria-label="Choose an interview category" id="interview-cats"></div>
+          <div id="interview-root"></div>
+        </section>
+
+        <!-- ========== SETTINGS ========== -->
+        <section class="view" data-view="settings" aria-labelledby="settings-h" hidden>
+          <div class="view-head">
+            <div>
+              <h2 id="settings-h">Settings</h2>
+              <p>Update your profile and manage your demo data.</p>
+            </div>
+          </div>
+          <div class="settings-grid">
+            <form class="card form-card" id="settings-form" novalidate>
+              <h3 class="card-title"><i data-lucide="user" aria-hidden="true"></i> Profile</h3>
+              <div class="form-grid form-grid-2">
+                <div class="field"><label for="s-name">First name</label><input id="s-name" name="name" type="text" maxlength="40" placeholder="Your first name"></div>
+                <div class="field"><label for="s-year">Academic year</label>
+                  <select id="s-year" name="year"><option>First-year</option><option>Sophomore</option><option>Junior</option><option>Senior</option><option>Fifth year or beyond</option><option>Graduate</option></select></div>
+                <div class="field"><label for="s-major">Major or area of interest</label><select id="s-major" name="major"></select></div>
+                <div class="field"><label for="s-minutes">Daily time available</label>
+                  <select id="s-minutes" name="minutes"><option value="15">15 minutes</option><option value="30">30 minutes</option><option value="45">45 minutes</option><option value="60">60+ minutes</option></select></div>
+                <div class="field field-span-2"><label for="s-goal">Career goal</label><input id="s-goal" name="careerGoal" type="text" maxlength="60" placeholder="e.g., Data Analyst — or leave blank if you're exploring"></div>
+              </div>
+              <button class="btn btn-primary" type="submit"><i data-lucide="save" aria-hidden="true"></i> Save profile</button>
+            </form>
+            <div class="settings-side">
+              <div class="card">
+                <h3 class="card-title"><i data-lucide="user-circle" aria-hidden="true"></i> Account</h3>
+                <p class="plan-label" id="account-label"></p>
+                <p class="muted small">Early version: accounts live only in this browser and don't use a password. Secure sign-in arrives with the full product.</p>
+                <div class="stack-actions"><button class="btn btn-secondary btn-block" type="button" data-action="logout"><i data-lucide="log-out" aria-hidden="true"></i> Log out</button></div>
+              </div>
+              <div class="card">
+                <h3 class="card-title"><i data-lucide="credit-card" aria-hidden="true"></i> Plan</h3>
+                <p id="plan-label" class="plan-label"></p>
+                <p class="muted small">Proposed introductory pricing. During this early version, every feature is available on both plans.</p>
+                <div class="stack-actions"><a class="btn btn-primary btn-block" href="checkout.html" id="upgrade-btn"><i data-lucide="sparkles" aria-hidden="true"></i> Upgrade to Plus</a></div>
+              </div>
+              <div class="card">
+                <h3 class="card-title"><i data-lucide="database" aria-hidden="true"></i> Your data</h3>
+                <p class="muted small">Everything you enter is stored in this browser's localStorage. Nothing is sent to a server.</p>
+                <div class="stack-actions">
+                  <a class="btn btn-secondary btn-block" href="index.html#start"><i data-lucide="sparkles" aria-hidden="true"></i> Retake onboarding</a>
+                  <button class="btn btn-secondary btn-block" type="button" data-action="reset-demo"><i data-lucide="rotate-ccw" aria-hidden="true"></i> <span id="reset-label">Reset to sample data</span></button>
+                  <button class="btn btn-ghost btn-danger btn-block" type="button" data-action="clear-demo"><i data-lucide="trash-2" aria-hidden="true"></i> Start with an empty workspace</button>
+                </div>
+              </div>
+              <div class="card note-card">
+                <h3 class="card-title"><i data-lucide="info" aria-hidden="true"></i> About this demo</h3>
+                <p class="muted small">Plans, challenges, and interview feedback use predefined rules — no AI model is connected. Smart Mentor supports your planning but does not replace academic advisors, career professionals, or instructors.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- Portfolio preview -->
+  <dialog id="portfolio-dialog" class="modal modal-xl" aria-labelledby="pf-title">
+    <header class="modal-header">
+      <div><p class="eyebrow">Portfolio preview</p><h2 id="pf-title">How your portfolio could look</h2></div>
+      <button type="button" class="btn-icon" data-close-dialog aria-label="Close"><i data-lucide="x" aria-hidden="true"></i></button>
+    </header>
+    <div class="modal-body" id="portfolio-preview"></div>
+  </dialog>
+
+  <div class="toast-region" id="toasts" aria-live="polite"></div>
+</body>
+</html>

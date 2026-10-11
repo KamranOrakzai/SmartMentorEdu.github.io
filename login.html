@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Log In · Smart Mentor</title>
+  <meta name="description" content="Log in or create your Smart Mentor account, or explore the demo student workspace.">
+  <meta name="theme-color" content="#172554">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body data-page="login" class="auth-body">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="auth-layout">
+    <!-- Brand panel -->
+    <aside class="auth-aside" aria-hidden="true">
+      <a class="logo logo-light" href="index.html" tabindex="-1">
+        <svg class="logo-mark" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#fff"/><path d="M16 5.5 19.4 16H12.6Z" fill="#8B5CF6"/><path d="M12.6 16h6.8L16 26.5Z" fill="#172554"/><circle cx="16" cy="16" r="1.7" fill="#fff"/></svg>
+        <span>Smart Mentor</span>
+      </a>
+      <div class="auth-aside-copy">
+        <h2>Build your future, one day at a time.</h2>
+        <p>Plan your semester, discover your direction, build real skills, and get career-ready — all in one workspace.</p>
+        <ul class="auth-points">
+          <li><i data-lucide="calendar-days"></i> A daily plan that fits your schedule</li>
+          <li><i data-lucide="hammer"></i> Hands-on challenges for your major</li>
+          <li><i data-lucide="file-text"></i> Portfolio, resume, and interview practice</li>
+        </ul>
+      </div>
+      <p class="auth-aside-foot">Your personal guide from college to career.</p>
+    </aside>
+
+    <!-- Forms -->
+    <main id="main" class="auth-main">
+      <a class="logo auth-mobile-logo" href="index.html" aria-label="Smart Mentor home">
+        <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#172554"/><path d="M16 5.5 19.4 16H12.6Z" fill="#8B5CF6"/><path d="M12.6 16h6.8L16 26.5Z" fill="#fff"/><circle cx="16" cy="16" r="1.7" fill="#172554"/></svg>
+        <span>Smart Mentor</span>
+      </a>
+
+      <div class="auth-card">
+        <div class="callout callout-info auth-callout" id="signed-in" hidden>
+          <i data-lucide="user-check" aria-hidden="true"></i>
+          <div>
+            <p>You're signed in as <strong id="signed-in-name"></strong>.</p>
+            <div class="auth-inline-actions">
+              <button class="btn btn-primary btn-sm" type="button" id="continue-session">Go to my dashboard</button>
+              <button class="btn btn-ghost btn-sm" type="button" id="switch-account">Log out</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout callout-info auth-callout" id="plan-waiting" hidden>
+          <i data-lucide="sparkles" aria-hidden="true"></i>
+          <p>Your success plan is ready. Create an account to save it to your own workspace.</p>
+        </div>
+
+        <div class="callout callout-info auth-callout" id="checkout-waiting" hidden>
+          <i data-lucide="credit-card" aria-hidden="true"></i>
+          <p>Log in or create an account to upgrade to Smart Mentor Plus.</p>
+        </div>
+
+        <h1 class="auth-title">Welcome to Smart Mentor</h1>
+        <p class="muted auth-sub">Log in or create a free account to get your personal workspace.</p>
+
+        <div class="segmented auth-tabs" role="tablist" aria-label="Log in or create an account" id="auth-tabs">
+          <button role="tab" id="tab-login" aria-controls="panel-login" aria-selected="true" tabindex="0" type="button">Log in</button>
+          <button role="tab" id="tab-signup" aria-controls="panel-signup" aria-selected="false" tabindex="-1" type="button">Create account</button>
+        </div>
+
+        <!-- Log in -->
+        <section role="tabpanel" id="panel-login" aria-labelledby="tab-login">
+          <form id="login-form" novalidate>
+            <div class="field">
+              <label for="login-email">Email</label>
+              <input id="login-email" name="email" type="email" autocomplete="email" maxlength="120" placeholder="you@school.edu" required>
+            </div>
+            <div class="field">
+              <div class="label-row"><label for="login-password">Password</label><button type="button" class="link-btn" id="forgot-password">Forgot password?</button></div>
+              <div class="pw-wrap">
+                <input id="login-password" name="password" type="password" autocomplete="current-password" maxlength="100" placeholder="Your password" required>
+                <button type="button" class="pw-toggle" data-toggle-password="login-password" aria-label="Show password" aria-pressed="false"><i data-lucide="eye" aria-hidden="true"></i></button>
+              </div>
+              <p class="field-hint" id="forgot-help" hidden>Password reset by email needs a server, which comes with the full product. For now, you can create a new account in the other tab.</p>
+            </div>
+            <div class="field field-remember">
+              <label class="check-row" for="login-remember">
+                <input id="login-remember" name="remember" type="checkbox">
+                <span>Keep me signed in on this device for 30 days</span>
+              </label>
+            </div>
+            <button class="btn btn-primary btn-block btn-lg" type="submit">Log in <i data-lucide="arrow-right" aria-hidden="true"></i></button>
+          </form>
+        </section>
+
+        <!-- Sign up -->
+        <section role="tabpanel" id="panel-signup" aria-labelledby="tab-signup" hidden>
+          <form id="signup-form" novalidate>
+            <div class="field">
+              <label for="signup-name">First name</label>
+              <input id="signup-name" name="name" type="text" autocomplete="given-name" maxlength="40" placeholder="Your first name" required>
+            </div>
+            <div class="field">
+              <label for="signup-email">Email</label>
+              <input id="signup-email" name="email" type="email" autocomplete="email" maxlength="120" placeholder="you@school.edu" required>
+            </div>
+            <div class="field">
+              <label for="signup-password">Password</label>
+              <div class="pw-wrap">
+                <input id="signup-password" name="password" type="password" autocomplete="new-password" maxlength="100" placeholder="Create a password" required aria-describedby="pw-rules">
+                <button type="button" class="pw-toggle" data-toggle-password="signup-password" aria-label="Show password" aria-pressed="false"><i data-lucide="eye" aria-hidden="true"></i></button>
+              </div>
+              <ul class="pw-rules" id="pw-rules">
+                <li>At least 8 characters</li>
+                <li>At least one letter</li>
+                <li>At least one number</li>
+              </ul>
+            </div>
+            <div class="field">
+              <label for="signup-confirm">Confirm password</label>
+              <div class="pw-wrap">
+                <input id="signup-confirm" name="confirm" type="password" autocomplete="new-password" maxlength="100" placeholder="Re-enter your password" required>
+                <button type="button" class="pw-toggle" data-toggle-password="signup-confirm" aria-label="Show password" aria-pressed="false"><i data-lucide="eye" aria-hidden="true"></i></button>
+              </div>
+            </div>
+            <div class="field">
+              <label class="check-row" for="signup-agree">
+                <input id="signup-agree" name="agree" type="checkbox">
+                <span>I agree to the <a href="info.html#terms">Terms of Service</a> and <a href="info.html#privacy">Privacy Policy</a>.</span>
+              </label>
+            </div>
+            <div class="field field-remember">
+              <label class="check-row" for="signup-remember">
+                <input id="signup-remember" name="remember" type="checkbox">
+                <span>Keep me signed in on this device for 30 days</span>
+              </label>
+            </div>
+            <button class="btn btn-primary btn-block btn-lg" type="submit">Create my account <i data-lucide="arrow-right" aria-hidden="true"></i></button>
+          </form>
+        </section>
+
+        <div class="auth-divider"><span>or</span></div>
+        <button class="btn btn-secondary btn-block" type="button" data-action="use-demo"><i data-lucide="eye" aria-hidden="true"></i> Explore the demo account (sample student)</button>
+
+        <p class="auth-note"><i data-lucide="info" aria-hidden="true"></i> Your workspace is saved on this device, and your password is stored only as a one-way hash, never as plain text. Not on a shared computer? Leave "Keep me signed in" unchecked and you'll be signed out when the browser closes.</p>
+      </div>
+
+      <p class="auth-back"><a href="index.html"><i data-lucide="arrow-left" aria-hidden="true"></i> Back to home</a></p>
+    </main>
+  </div>
+
+  <div class="toast-region" id="toasts" aria-live="polite"></div>
+</body>
+</html>

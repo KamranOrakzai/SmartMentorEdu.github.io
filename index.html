@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smart Mentor — Your Personal Guide from College to Career</title>
+  <meta name="description" content="Smart Mentor helps college students build better study habits, discover their career path, develop real-world skills, and prepare for internships and jobs — all in one personalized workspace.">
+  <meta name="theme-color" content="#172554">
+  <meta property="og:title" content="Smart Mentor — Build Your Future, One Day at a Time">
+  <meta property="og:description" content="Your personal guide from college to career: study planning, career discovery, daily hands-on skill building, resumes, and interview prep.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body data-page="landing">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <header class="site-header" id="site-header">
+    <div class="container nav">
+      <a class="logo" href="index.html" aria-label="Smart Mentor home">
+        <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#172554"/><path d="M16 5.5 19.4 16H12.6Z" fill="#8B5CF6"/><path d="M12.6 16h6.8L16 26.5Z" fill="#fff"/><circle cx="16" cy="16" r="1.7" fill="#172554"/></svg>
+        <span>Smart Mentor</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#career-paths">Career Paths</a>
+        <a href="#pricing">Pricing</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn btn-ghost" href="login.html">Log In</a>
+        <button class="btn btn-primary" type="button" data-open-onboarding>Get Started</button>
+      </div>
+      <button class="btn-icon nav-toggle" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <i data-lucide="menu" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu" hidden>
+      <nav class="container" aria-label="Mobile">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#career-paths">Career Paths</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <div class="mobile-menu-actions">
+          <a class="btn btn-secondary btn-block" href="login.html">Log In</a>
+          <button class="btn btn-primary btn-block" type="button" data-open-onboarding>Get Started</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ===================== HERO ===================== -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow-pill"><i data-lucide="compass" aria-hidden="true"></i> Your personal guide from college to career</p>
+          <h1>Build Your Future, <span class="text-gradient">One Day at a Time.</span></h1>
+          <p class="hero-lead">Your college life is more than grades. Build better study habits, discover your career path, develop real-world skills, and become career-ready with one personalized plan.</p>
+          <div class="hero-ctas">
+            <button class="btn btn-primary btn-lg" type="button" data-open-onboarding>Build My Success Plan <i data-lucide="arrow-right" aria-hidden="true"></i></button>
+            <a class="btn btn-secondary btn-lg" href="#features">Explore Features</a>
+          </div>
+          <ul class="hero-points" aria-label="Highlights">
+            <li><i data-lucide="check" aria-hidden="true"></i> Free plan available</li>
+            <li><i data-lucide="check" aria-hidden="true"></i> Plans that fit 15–60 minutes a day</li>
+            <li><i data-lucide="check" aria-hidden="true"></i> No credit card required</li>
+          </ul>
+        </div>
+
+        <div class="hero-visual">
+          <div class="mock-window" role="img" aria-label="Preview of the Smart Mentor dashboard: welcome message, 60 percent daily progress, today's tasks, a Software Developer career goal, skill progress bars, and upcoming deadlines.">
+            <div class="mock-bar" aria-hidden="true"><span></span><span></span><span></span><div class="mock-url">smartmentor · Today</div></div>
+            <div class="mock-body" aria-hidden="true">
+              <div class="mock-head">
+                <div>
+                  <p class="mock-kicker">Good afternoon</p>
+                  <p class="mock-title">Welcome back, Alex</p>
+                  <p class="mock-sub">3 of 5 tasks done · about 45 min left today</p>
+                </div>
+                <div class="ring ring-md" style="--p:60"><span>60%</span></div>
+              </div>
+              <div class="mock-grid">
+                <div class="mock-card mock-span-2">
+                  <p class="mock-label">Today's tasks</p>
+                  <ul class="mock-tasks">
+                    <li class="done"><span class="mock-check"><i data-lucide="check"></i></span>Review Data Structures notes<em class="tag tag-blue">Study</em></li>
+                    <li class="done"><span class="mock-check"><i data-lucide="check"></i></span>Solve three array challenges<em class="tag tag-purple">Skills</em></li>
+                    <li><span class="mock-check"></span>Finish CS 201 problem set #4<em class="tag tag-amber">Assignment</em></li>
+                    <li><span class="mock-check"></span>Update resume skills section<em class="tag tag-green">Career</em></li>
+                  </ul>
+                </div>
+                <div class="mock-card">
+                  <p class="mock-label">Career goal</p>
+                  <p class="mock-strong"><i data-lucide="target"></i> Software Developer</p>
+                  <p class="mock-muted">Next: publish a portfolio project</p>
+                </div>
+                <div class="mock-card">
+                  <p class="mock-label">Skill development</p>
+                  <div class="mock-skill"><span>JavaScript</span><div class="progress progress-sm"><span style="width:70%"></span></div></div>
+                  <div class="mock-skill"><span>Git</span><div class="progress progress-sm"><span style="width:45%"></span></div></div>
+                  <div class="mock-skill"><span>Problem solving</span><div class="progress progress-sm"><span style="width:60%"></span></div></div>
+                </div>
+                <div class="mock-card mock-span-2">
+                  <p class="mock-label">Upcoming deadlines</p>
+                  <div class="mock-deadlines">
+                    <div><i data-lucide="file-text"></i><span>CS 201 Problem Set</span><em class="tag tag-amber">Tomorrow</em></div>
+                    <div><i data-lucide="book-open"></i><span>Calculus II Midterm</span><em class="tag tag-red">Fri</em></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="float-chip" aria-hidden="true"><i data-lucide="sparkles"></i> Challenge complete · saved to portfolio</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== VALUE ===================== -->
+    <section class="section section-tight value" aria-labelledby="value-title">
+      <div class="container">
+        <div class="value-card">
+          <div class="value-intro">
+            <p class="eyebrow">One workspace</p>
+            <h2 id="value-title">College productivity and career development, finally in one place.</h2>
+            <p>Most students juggle a planner app, a notes doc, a resume template, and a dozen career tabs. Smart Mentor connects what you do every day in class with where you want to go after graduation.</p>
+          </div>
+          <ul class="value-list">
+            <li><span class="icon-tile icon-blue"><i data-lucide="calendar-days" aria-hidden="true"></i></span><div><strong>Plan your semester</strong><p>Classes, deadlines, and study sessions in one weekly view.</p></div></li>
+            <li><span class="icon-tile icon-purple"><i data-lucide="compass" aria-hidden="true"></i></span><div><strong>Discover your direction</strong><p>See where your major can lead and what each path requires.</p></div></li>
+            <li><span class="icon-tile icon-green"><i data-lucide="hammer" aria-hidden="true"></i></span><div><strong>Build real skills</strong><p>Short daily challenges that become portfolio-ready work.</p></div></li>
+            <li><span class="icon-tile icon-navy"><i data-lucide="briefcase" aria-hidden="true"></i></span><div><strong>Get career-ready</strong><p>Resume, portfolio, and interview practice in the same place.</p></div></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FEATURES ===================== -->
+    <section class="section" id="features" aria-labelledby="features-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Features</p>
+          <h2 id="features-title">Everything you need between your first class and your first job</h2>
+          <p>Six connected tools, designed around how students actually spend their week.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <span class="icon-tile icon-blue"><i data-lucide="graduation-cap" aria-hidden="true"></i></span>
+            <h3>College Success</h3>
+            <p>Build routines that make college feel manageable instead of overwhelming.</p>
+            <ul class="check-list"><li>Time management</li><li>Study habits</li><li>Productivity</li><li>College life guidance</li></ul>
+            <a class="feature-link" href="dashboard.html#goals">Set your goals <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+          </article>
+          <article class="feature-card">
+            <span class="icon-tile icon-purple"><i data-lucide="calendar-check" aria-hidden="true"></i></span>
+            <h3>Smart Study Planner</h3>
+            <p>See classes, deadlines, and focused study sessions in one weekly view.</p>
+            <ul class="check-list"><li>Class schedules</li><li>Assignment deadlines</li><li>Exam preparation</li><li>Personalized study sessions</li></ul>
+            <a class="feature-link" href="dashboard.html#planner">Open the planner <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+          </article>
+          <article class="feature-card">
+            <span class="icon-tile icon-green"><i data-lucide="compass" aria-hidden="true"></i></span>
+            <h3>Major &amp; Career Discovery</h3>
+            <p>Explore where your major can lead and what it takes to get there.</p>
+            <ul class="check-list"><li>Explore majors</li><li>Understand career options</li><li>Compare skill requirements</li><li>Identify next steps</li></ul>
+            <a class="feature-link" href="dashboard.html#career">Explore careers <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+          </article>
+          <article class="feature-card feature-card-highlight">
+            <span class="icon-tile icon-indigo"><i data-lucide="hammer" aria-hidden="true"></i></span>
+            <h3>Daily Hands-On Skill Building</h3>
+            <p>Short, practical challenges that turn coursework into real ability.</p>
+            <ul class="check-list"><li>Practical exercises</li><li>Guided projects</li><li>Skill tracking</li><li>Portfolio development</li></ul>
+            <a class="feature-link" href="dashboard.html#skills">Try a challenge <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+          </article>
+          <article class="feature-card">
+            <span class="icon-tile icon-navy"><i data-lucide="file-text" aria-hidden="true"></i></span>
+            <h3>Resume &amp; Portfolio Builder</h3>
+            <p>Capture what you build and learn, then present it professionally.</p>
+            <ul class="check-list"><li>Resume creation</li><li>Achievement tracking</li><li>Project descriptions</li><li>Professional portfolio preparation</li></ul>
+            <a class="feature-link" href="dashboard.html#resume">Build your resume <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+          </article>
+          <article class="feature-card">
+            <span class="icon-tile icon-amber"><i data-lucide="mic" aria-hidden="true"></i></span>
+            <h3>Interview &amp; Job Preparation</h3>
+            <p>Practice answers, organize your search, and walk in prepared.</p>
+            <ul class="check-list"><li>Mock interviews</li><li>Interview practice</li><li>Internship preparation</li><li>Job-search organization</li></ul>
+            <a class="feature-link" href="dashboard.html#interview">Practice interviews <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== HOW IT WORKS ===================== -->
+    <section class="section section-muted" id="how-it-works" aria-labelledby="how-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">How it works</p>
+          <h2 id="how-title">From “not sure where to start” to a plan in minutes</h2>
+        </div>
+        <ol class="steps">
+          <li class="step-card">
+            <span class="step-num">1</span>
+            <span class="icon-tile icon-blue"><i data-lucide="search" aria-hidden="true"></i></span>
+            <h3>Discover Your Path</h3>
+            <p>Choose your major, interests, current skills, and career goals — or tell us you're still figuring it out.</p>
+          </li>
+          <li class="step-card">
+            <span class="step-num">2</span>
+            <span class="icon-tile icon-purple"><i data-lucide="list-checks" aria-hidden="true"></i></span>
+            <h3>Get Your Personalized Plan</h3>
+            <p>Smart Mentor organizes your goals, academic tasks, and practical learning activities into a daily plan.</p>
+          </li>
+          <li class="step-card">
+            <span class="step-num">3</span>
+            <span class="icon-tile icon-green"><i data-lucide="trending-up" aria-hidden="true"></i></span>
+            <h3>Build Skills and Track Progress</h3>
+            <p>Complete tasks, save projects, review your progress, and prepare for your future career.</p>
+          </li>
+        </ol>
+        <div class="center-cta">
+          <button class="btn btn-primary btn-lg" type="button" data-open-onboarding>Build My Success Plan <i data-lucide="arrow-right" aria-hidden="true"></i></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SKILL BUILDING ===================== -->
+    <section class="section skills-band" id="career-paths" aria-labelledby="skills-title">
+      <div class="container">
+        <div class="skills-head">
+          <div>
+            <p class="eyebrow eyebrow-light">Hands-on skill building</p>
+            <h2 id="skills-title">Your Major Is Just the Beginning.</h2>
+            <p class="skills-lead">Turn what you study into what you can actually do.</p>
+          </div>
+          <p class="skills-explain">Get short, achievable daily challenges based on your major, skill level, available time, and career goals. Each one ends with something concrete you can save to your portfolio.</p>
+        </div>
+
+        <div class="adapt-row" aria-label="Challenges adapt to">
+          <span><i data-lucide="graduation-cap" aria-hidden="true"></i> Your major</span>
+          <span><i data-lucide="gauge" aria-hidden="true"></i> Skill level</span>
+          <span><i data-lucide="clock" aria-hidden="true"></i> Available time</span>
+          <span><i data-lucide="target" aria-hidden="true"></i> Career goals</span>
+        </div>
+
+        <div class="track-shell">
+          <div class="track-tabs" role="tablist" aria-label="Example learning tracks" id="track-tabs">
+            <button role="tab" id="tab-cs" aria-controls="panel-cs" aria-selected="true" tabindex="0"><i data-lucide="code-2" aria-hidden="true"></i> Computer Science</button>
+            <button role="tab" id="tab-business" aria-controls="panel-business" aria-selected="false" tabindex="-1"><i data-lucide="briefcase" aria-hidden="true"></i> Business</button>
+            <button role="tab" id="tab-marketing" aria-controls="panel-marketing" aria-selected="false" tabindex="-1"><i data-lucide="megaphone" aria-hidden="true"></i> Marketing</button>
+            <button role="tab" id="tab-finance" aria-controls="panel-finance" aria-selected="false" tabindex="-1"><i data-lucide="line-chart" aria-hidden="true"></i> Finance</button>
+          </div>
+
+          <div class="track-panel" role="tabpanel" id="panel-cs" aria-labelledby="tab-cs" tabindex="0">
+            <div class="track-list">
+              <h3>Computer Science track</h3>
+              <ol>
+                <li><span>01</span>Build a small application</li>
+                <li><span>02</span>Practice programming challenges</li>
+                <li><span>03</span>Learn version control</li>
+                <li><span>04</span>Create a portfolio project</li>
+              </ol>
+            </div>
+            <div class="challenge-preview">
+              <div class="cp-top"><span class="tag tag-purple">Today's challenge</span><span class="cp-time"><i data-lucide="clock" aria-hidden="true"></i> 25 min</span></div>
+              <h4>Learn the Git basics</h4>
+              <p>Create a repository, make your first commit, branch, and merge — the workflow every software team uses.</p>
+              <div class="cp-outcome"><i data-lucide="award" aria-hidden="true"></i> Outcome: a repo history you can link on your resume</div>
+            </div>
+          </div>
+
+          <div class="track-panel" role="tabpanel" id="panel-business" aria-labelledby="tab-business" tabindex="0" hidden>
+            <div class="track-list">
+              <h3>Business track</h3>
+              <ol>
+                <li><span>01</span>Analyze a company</li>
+                <li><span>02</span>Create a spreadsheet model</li>
+                <li><span>03</span>Practice presentations</li>
+                <li><span>04</span>Develop a business case study</li>
+              </ol>
+            </div>
+            <div class="challenge-preview">
+              <div class="cp-top"><span class="tag tag-purple">Today's challenge</span><span class="cp-time"><i data-lucide="clock" aria-hidden="true"></i> 35 min</span></div>
+              <h4>Analyze a company you use every week</h4>
+              <p>Map its customers, product, and revenue model, then write a short SWOT analysis.</p>
+              <div class="cp-outcome"><i data-lucide="award" aria-hidden="true"></i> Outcome: a one-page company brief</div>
+            </div>
+          </div>
+
+          <div class="track-panel" role="tabpanel" id="panel-marketing" aria-labelledby="tab-marketing" tabindex="0" hidden>
+            <div class="track-list">
+              <h3>Marketing track</h3>
+              <ol>
+                <li><span>01</span>Design a campaign</li>
+                <li><span>02</span>Research a target audience</li>
+                <li><span>03</span>Create sample marketing content</li>
+                <li><span>04</span>Measure campaign performance</li>
+              </ol>
+            </div>
+            <div class="challenge-preview">
+              <div class="cp-top"><span class="tag tag-purple">Today's challenge</span><span class="cp-time"><i data-lucide="clock" aria-hidden="true"></i> 30 min</span></div>
+              <h4>Define a target audience</h4>
+              <p>Write two audience personas for a campus event and decide which message matters to each.</p>
+              <div class="cp-outcome"><i data-lucide="award" aria-hidden="true"></i> Outcome: two personas you can reuse in a campaign plan</div>
+            </div>
+          </div>
+
+          <div class="track-panel" role="tabpanel" id="panel-finance" aria-labelledby="tab-finance" tabindex="0" hidden>
+            <div class="track-list">
+              <h3>Finance track</h3>
+              <ol>
+                <li><span>01</span>Practice spreadsheet modeling</li>
+                <li><span>02</span>Analyze financial statements</li>
+                <li><span>03</span>Build a sample company analysis</li>
+              </ol>
+            </div>
+            <div class="challenge-preview">
+              <div class="cp-top"><span class="tag tag-purple">Today's challenge</span><span class="cp-time"><i data-lucide="clock" aria-hidden="true"></i> 30 min</span></div>
+              <h4>Read an income statement</h4>
+              <p>Find revenue, gross profit, and net income in a public company's annual report and calculate margins.</p>
+              <div class="cp-outcome"><i data-lucide="award" aria-hidden="true"></i> Outcome: a margin summary you can explain in an interview</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="center-cta">
+          <a class="btn btn-light btn-lg" href="dashboard.html#skills">Explore Skill Paths <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== DASHBOARD PREVIEW ===================== -->
+    <section class="section" id="demo" aria-labelledby="demo-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Inside Smart Mentor</p>
+          <h2 id="demo-title">A daily dashboard that keeps college and career moving together</h2>
+          <p>Shown with a sample demo student, Alex. The interactive version saves progress in your browser.</p>
+        </div>
+
+        <div class="board" role="img" aria-label="Sample student dashboard for a demo account named Alex, showing today's focus, daily progress, weekly goals, upcoming deadlines, skill development, a career roadmap, recent achievements, and a weekly activity chart.">
+          <div class="board-side" aria-hidden="true">
+            <div class="board-logo"><svg viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#172554"/><path d="M16 5.5 19.4 16H12.6Z" fill="#8B5CF6"/><path d="M12.6 16h6.8L16 26.5Z" fill="#fff"/></svg> Smart Mentor</div>
+            <span class="active"><i data-lucide="layout-dashboard"></i> Overview</span>
+            <span><i data-lucide="calendar-days"></i> Study Planner</span>
+            <span><i data-lucide="target"></i> Goals</span>
+            <span><i data-lucide="compass"></i> Major &amp; Career</span>
+            <span><i data-lucide="hammer"></i> Skill Builder</span>
+            <span><i data-lucide="folder-open"></i> Portfolio</span>
+            <span><i data-lucide="file-text"></i> Resume</span>
+            <span><i data-lucide="mic"></i> Interviews</span>
+          </div>
+          <div class="board-main" aria-hidden="true">
+            <div class="board-top">
+              <div><p class="mock-kicker">Sample demo account</p><p class="board-title">Welcome back, Alex</p></div>
+              <span class="tag tag-blue">Sophomore · Computer Science</span>
+            </div>
+            <div class="board-stats">
+              <div><span class="stat-label">Daily progress</span><strong>60%</strong><div class="progress progress-sm"><span style="width:60%"></span></div></div>
+              <div><span class="stat-label">Tasks remaining</span><strong>2</strong><small>~45 min left</small></div>
+              <div><span class="stat-label">Weekly goals</span><strong>3 / 5</strong><small>on track</small></div>
+              <div><span class="stat-label">Challenges done</span><strong>6</strong><small>this month</small></div>
+            </div>
+            <div class="board-grid">
+              <div class="board-card board-span-2">
+                <p class="mock-label">Today's focus</p>
+                <p class="mock-strong">Finish CS 201 problem set #4</p>
+                <ul class="mock-tasks">
+                  <li class="done"><span class="mock-check"><i data-lucide="check"></i></span>Review Data Structures notes<em class="tag tag-blue">30 min</em></li>
+                  <li><span class="mock-check"></span>Daily challenge: Learn the Git basics<em class="tag tag-purple">25 min</em></li>
+                  <li><span class="mock-check"></span>Update resume skills section<em class="tag tag-green">15 min</em></li>
+                </ul>
+              </div>
+              <div class="board-card">
+                <p class="mock-label">This week</p>
+                <div class="mini-bars">
+                  <span style="--h:45%"><em>M</em></span><span style="--h:70%"><em>T</em></span><span style="--h:55%"><em>W</em></span><span style="--h:85%" class="on"><em>T</em></span><span style="--h:30%"><em>F</em></span><span style="--h:20%"><em>S</em></span><span style="--h:40%"><em>S</em></span>
+                </div>
+              </div>
+              <div class="board-card">
+                <p class="mock-label">Upcoming deadlines</p>
+                <div class="mock-deadlines">
+                  <div><i data-lucide="file-text"></i><span>CS 201 Problem Set</span><em class="tag tag-amber">Tomorrow</em></div>
+                  <div><i data-lucide="book-open"></i><span>Calculus Midterm</span><em class="tag tag-red">Fri</em></div>
+                  <div><i data-lucide="pen-line"></i><span>English Essay Draft</span><em class="tag tag-gray">Oct 20</em></div>
+                </div>
+              </div>
+              <div class="board-card">
+                <p class="mock-label">Skill development</p>
+                <div class="mock-skill"><span>Programming</span><div class="progress progress-sm"><span style="width:68%"></span></div></div>
+                <div class="mock-skill"><span>Version control</span><div class="progress progress-sm"><span style="width:40%"></span></div></div>
+                <div class="mock-skill"><span>Communication</span><div class="progress progress-sm"><span style="width:52%"></span></div></div>
+              </div>
+              <div class="board-card">
+                <p class="mock-label">Career roadmap</p>
+                <ol class="mock-road">
+                  <li class="done">Set a career direction</li>
+                  <li class="done">Complete 3 skill challenges</li>
+                  <li class="current">Add 2 portfolio projects</li>
+                  <li>Draft your resume</li>
+                </ol>
+              </div>
+              <div class="board-card">
+                <p class="mock-label">Recent achievements</p>
+                <ul class="mock-achieve">
+                  <li><i data-lucide="award"></i> Completed: Array challenges</li>
+                  <li><i data-lucide="target"></i> Goal met: Weekly study schedule</li>
+                  <li><i data-lucide="folder-open"></i> Project added: Study Room Finder</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="center-cta">
+          <a class="btn btn-primary btn-lg" href="dashboard.html">Open the Interactive Dashboard <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== USE CASES ===================== -->
+    <section class="section section-muted" aria-labelledby="usecases-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Use cases</p>
+          <h2 id="usecases-title">Designed Around Real Student Challenges</h2>
+          <p>These are illustrative example scenarios — not customer testimonials.</p>
+        </div>
+        <div class="usecase-grid">
+          <article class="usecase-card">
+            <span class="tag tag-gray">Example scenario</span>
+            <h3>The undecided sophomore</h3>
+            <p class="usecase-problem"><strong>Challenge:</strong> Has to declare a major soon and doesn't know what different majors actually lead to.</p>
+            <p><strong>How Smart Mentor helps:</strong> Compare career directions and required skills across majors, try a short hands-on challenge from each, and bring better questions to an academic advisor.</p>
+          </article>
+          <article class="usecase-card">
+            <span class="tag tag-gray">Example scenario</span>
+            <h3>The working student</h3>
+            <p class="usecase-problem"><strong>Challenge:</strong> Works 25 hours a week and only has small pockets of time for anything beyond coursework.</p>
+            <p><strong>How Smart Mentor helps:</strong> A 30-minute daily plan that balances deadlines with one small skill-building step, so progress still happens on busy days.</p>
+          </article>
+          <article class="usecase-card">
+            <span class="tag tag-gray">Example scenario</span>
+            <h3>The internship hunter</h3>
+            <p class="usecase-problem"><strong>Challenge:</strong> Has good grades but nothing concrete to show on a resume or talk about in interviews.</p>
+            <p><strong>How Smart Mentor helps:</strong> Turn completed challenges into portfolio projects, format them on a resume, and practice answers that reference real work.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PRICING ===================== -->
+    <section class="section" id="pricing" aria-labelledby="pricing-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Pricing</p>
+          <h2 id="pricing-title">Start free. Upgrade when you're ready.</h2>
+          <p>Proposed introductory pricing — subject to change. Payments are processed securely by Stripe; cancel anytime.</p>
+        </div>
+        <div class="pricing-grid">
+          <article class="price-card">
+            <h3>Free</h3>
+            <p class="price-desc">The essentials for getting organized and exploring your options.</p>
+            <p class="price"><span class="price-amount">$0</span><span class="price-period">/ month</span></p>
+            <button class="btn btn-secondary btn-block" type="button" data-open-onboarding data-plan="free">Start Free</button>
+            <ul class="check-list">
+              <li>Basic study planning</li>
+              <li>Goal setting</li>
+              <li>Major exploration</li>
+              <li>Limited skill-building activities</li>
+              <li>Basic resume resources</li>
+            </ul>
+          </article>
+          <article class="price-card price-card-featured">
+            <span class="price-flag">Most complete</span>
+            <h3>Smart Mentor Plus</h3>
+            <p class="price-desc">Deeper personalization and guided practice for career readiness.</p>
+            <p class="price"><span class="price-amount" data-price-plus>$9.99</span><span class="price-period">/ month</span></p>
+            <p class="price-note">Proposed introductory price</p>
+            <a class="btn btn-primary btn-block" href="checkout.html">Upgrade to Plus</a>
+            <ul class="check-list">
+              <li>More personalized planning</li>
+              <li>Expanded skill-building activities</li>
+              <li>Guided projects</li>
+              <li>Advanced progress tracking</li>
+              <li>Resume assistance</li>
+              <li>Interview preparation</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FAQ ===================== -->
+    <section class="section section-muted" id="faq" aria-labelledby="faq-title">
+      <div class="container container-narrow">
+        <div class="section-head">
+          <p class="eyebrow">FAQ</p>
+          <h2 id="faq-title">Frequently asked questions</h2>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item">
+            <h3><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-1">What is Smart Mentor?<i data-lucide="chevron-down" aria-hidden="true"></i></button></h3>
+            <div class="faq-a" id="faq-1" hidden><p>Smart Mentor is a personalized workspace that brings college planning, career exploration, daily hands-on skill building, and job preparation into one place. This website is an early product demo: plans and feedback are generated by predefined rules in your browser, not by AI.</p></div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-2">Who is Smart Mentor for?<i data-lucide="chevron-down" aria-hidden="true"></i></button></h3>
+            <div class="faq-a" id="faq-2" hidden><p>College and university students in the United States — community college, four-year, and graduate students, as well as recent graduates. It's especially useful if you're unsure about your major, want experience beyond coursework, or are preparing for internships and your first job.</p></div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-3">Can Smart Mentor help me choose a major?<i data-lucide="chevron-down" aria-hidden="true"></i></button></h3>
+            <div class="faq-a" id="faq-3" hidden><p>It helps you explore. You can compare example career directions, skills, and projects for different majors and try short hands-on challenges. The final decision is best made with your academic advisor, who knows your school's requirements.</p></div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-4">How does daily skill building work?<i data-lucide="chevron-down" aria-hidden="true"></i></button></h3>
+            <div class="faq-a" id="faq-4" hidden><p>You choose a learning track and work through short challenges (about 25–60 minutes each) with clear instructions and an expected outcome. When you finish, mark it complete and save it to your portfolio. The full product is designed to tailor challenges to your major, skill level, time, and goals; this demo uses a fixed sample library.</p></div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-5">Can I use Smart Mentor while working or studying full-time?<i data-lucide="chevron-down" aria-hidden="true"></i></button></h3>
+            <div class="faq-a" id="faq-5" hidden><p>Yes. You choose how much time you have each day — 15, 30, 45, or 60+ minutes — and your plan is built to fit inside it.</p></div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-6">Is Smart Mentor free?<i data-lucide="chevron-down" aria-hidden="true"></i></button></h3>
+            <div class="faq-a" id="faq-6" hidden><p>There is a free plan with the core features. Smart Mentor Plus is proposed at an introductory <span data-price-plus>$9.99</span>/month, paid securely through Stripe. Pricing isn't final yet.</p></div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-7">Does Smart Mentor replace an academic advisor?<i data-lucide="chevron-down" aria-hidden="true"></i></button></h3>
+            <div class="faq-a" id="faq-7" hidden><p>No. Smart Mentor supports your planning and practice between meetings, but it does not replace university advisors, qualified career professionals, or instructors. Use it to arrive at those conversations better prepared.</p></div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-8">Where is my data stored in this demo?<i data-lucide="chevron-down" aria-hidden="true"></i></button></h3>
+            <div class="faq-a" id="faq-8" hidden><p>Only in your browser's local storage. Nothing is sent to a server, and you can reset the demo anytime from the dashboard's Settings page.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FINAL CTA ===================== -->
+    <section class="section section-tight" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="cta-band">
+          <h2 id="cta-title">Don't just earn your degree. Build the skills, experience, and confidence to use it.</h2>
+          <p>Answer a few quick questions and get a sample daily plan built around your major, goals, and schedule.</p>
+          <div class="hero-ctas">
+            <button class="btn btn-light btn-lg" type="button" data-open-onboarding>Build My Success Plan <i data-lucide="arrow-right" aria-hidden="true"></i></button>
+            <a class="btn btn-outline-light btn-lg" href="dashboard.html">Explore Smart Mentor</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="index.html">
+          <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#172554"/><path d="M16 5.5 19.4 16H12.6Z" fill="#8B5CF6"/><path d="M12.6 16h6.8L16 26.5Z" fill="#fff"/><circle cx="16" cy="16" r="1.7" fill="#172554"/></svg>
+          <span>Smart Mentor</span>
+        </a>
+        <p>Your personal guide from college to career. Helping students build the habits, skills, and confidence to turn a degree into a future.</p>
+      </div>
+      <div>
+        <h3 class="footer-title">Product</h3>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="dashboard.html">Demo Dashboard</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-title">Student Resources</h3>
+        <ul>
+          <li><a href="dashboard.html#career">Career Paths</a></li>
+          <li><a href="dashboard.html#skills">Skill Builder</a></li>
+          <li><a href="dashboard.html#resume">Resume Builder</a></li>
+          <li><a href="dashboard.html#interview">Interview Practice</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-title">Company</h3>
+        <ul>
+          <li><a href="info.html#about">About</a></li>
+          <li><a href="info.html#contact">Contact</a></li>
+          <li><a href="info.html#privacy">Privacy Policy</a></li>
+          <li><a href="info.html#terms">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span data-year>2026</span> Smart Mentor. All rights reserved.</p>
+      <p>Smart Mentor supports students and does not replace academic advisors, career professionals, or instructors.</p>
+    </div>
+  </footer>
+
+  <!-- ===================== ONBOARDING WIZARD ===================== -->
+  <dialog id="onboarding" class="modal modal-lg" aria-labelledby="ob-title">
+    <form id="ob-form" class="wizard" novalidate>
+      <input type="hidden" name="plan" value="free">
+      <header class="modal-header">
+        <div>
+          <p class="eyebrow">Build my success plan</p>
+          <h2 id="ob-title">Let's personalize Smart Mentor</h2>
+        </div>
+        <button type="button" class="btn-icon" data-close-dialog aria-label="Close"><i data-lucide="x" aria-hidden="true"></i></button>
+      </header>
+
+      <ol class="wizard-steps" aria-hidden="true">
+        <li data-step-indicator="1"><span>1</span><em>Welcome</em></li>
+        <li data-step-indicator="2"><span>2</span><em>Education</em></li>
+        <li data-step-indicator="3"><span>3</span><em>Goals</em></li>
+        <li data-step-indicator="4"><span>4</span><em>Time</em></li>
+        <li data-step-indicator="5"><span>5</span><em>Your plan</em></li>
+      </ol>
+
+      <div class="modal-body">
+        <!-- Step 1 -->
+        <section class="wizard-panel" data-step="1" aria-labelledby="ob-s1">
+          <h3 id="ob-s1">What do you want to improve most?</h3>
+          <p class="muted">Pick what matters most right now. You can change it anytime.</p>
+          <fieldset class="option-grid">
+            <legend class="sr-only">Main focus</legend>
+            <label class="option-card"><input type="radio" name="focus" value="academic"><span class="option-icon"><i data-lucide="book-open" aria-hidden="true"></i></span><span class="option-text"><strong>Academic success</strong><small>Study habits, time management, grades</small></span></label>
+            <label class="option-card"><input type="radio" name="focus" value="major"><span class="option-icon"><i data-lucide="compass" aria-hidden="true"></i></span><span class="option-text"><strong>Choosing a major</strong><small>Explore majors and where they lead</small></span></label>
+            <label class="option-card"><input type="radio" name="focus" value="skills"><span class="option-icon"><i data-lucide="hammer" aria-hidden="true"></i></span><span class="option-text"><strong>Building practical skills</strong><small>Hands-on challenges and projects</small></span></label>
+            <label class="option-card"><input type="radio" name="focus" value="career"><span class="option-icon"><i data-lucide="briefcase" aria-hidden="true"></i></span><span class="option-text"><strong>Resume &amp; interview prep</strong><small>Get ready for internships and jobs</small></span></label>
+            <label class="option-card option-wide"><input type="radio" name="focus" value="overall"><span class="option-icon"><i data-lucide="sparkles" aria-hidden="true"></i></span><span class="option-text"><strong>Overall college &amp; career success</strong><small>A balanced plan across everything</small></span></label>
+          </fieldset>
+          <p class="field-error" data-error="focus" hidden></p>
+          <div class="field">
+            <label for="ob-name">First name <span class="optional">(optional)</span></label>
+            <input id="ob-name" name="name" type="text" maxlength="40" autocomplete="given-name" placeholder="What should we call you?">
+          </div>
+        </section>
+
+        <!-- Step 2 -->
+        <section class="wizard-panel" data-step="2" aria-labelledby="ob-s2" hidden>
+          <h3 id="ob-s2">Tell us about your education</h3>
+          <p class="muted">This helps us suggest the right activities.</p>
+          <div class="field">
+            <label for="ob-level">Education level</label>
+            <select id="ob-level" name="level">
+              <option value="">Select your level</option>
+              <option>Community college</option>
+              <option>Undergraduate (4-year)</option>
+              <option>Graduate student</option>
+              <option>Recent graduate</option>
+            </select>
+            <p class="field-error" data-error="level" hidden></p>
+          </div>
+          <div class="field">
+            <label for="ob-major">Current major or area of interest</label>
+            <select id="ob-major" name="major">
+              <option value="">Select a major</option>
+            </select>
+            <p class="field-error" data-error="major" hidden></p>
+          </div>
+          <div class="field">
+            <label for="ob-year">Academic year</label>
+            <select id="ob-year" name="year">
+              <option value="">Select your year</option>
+              <option>First-year</option>
+              <option>Sophomore</option>
+              <option>Junior</option>
+              <option>Senior</option>
+              <option>Fifth year or beyond</option>
+              <option>Graduate</option>
+            </select>
+            <p class="field-error" data-error="year" hidden></p>
+          </div>
+        </section>
+
+        <!-- Step 3 -->
+        <section class="wizard-panel" data-step="3" aria-labelledby="ob-s3" hidden>
+          <h3 id="ob-s3">Where would you like your career to go?</h3>
+          <p class="muted">A direction, not a commitment. Start typing or pick a suggestion.</p>
+          <div class="field">
+            <label for="ob-goal">Desired career direction</label>
+            <input id="ob-goal" name="careerGoal" type="text" list="ob-goal-list" maxlength="60" placeholder="e.g., Software Developer, Marketing Coordinator">
+            <datalist id="ob-goal-list"></datalist>
+          </div>
+          <div class="suggest-row" id="ob-goal-suggestions" aria-label="Suggestions"></div>
+          <label class="check-row">
+            <input type="checkbox" name="careerUnsure" id="ob-unsure">
+            <span>I'm not sure yet — help me explore</span>
+          </label>
+          <p class="field-error" data-error="careerGoal" hidden></p>
+        </section>
+
+        <!-- Step 4 -->
+        <section class="wizard-panel" data-step="4" aria-labelledby="ob-s4" hidden>
+          <h3 id="ob-s4">How much time can you spend each day?</h3>
+          <p class="muted">Be realistic — consistency beats intensity.</p>
+          <fieldset class="option-grid option-grid-4">
+            <legend class="sr-only">Daily time available</legend>
+            <label class="option-card option-center"><input type="radio" name="minutes" value="15"><span class="option-text"><strong>15 min</strong><small>A quick daily step</small></span></label>
+            <label class="option-card option-center"><input type="radio" name="minutes" value="30"><span class="option-text"><strong>30 min</strong><small>Steady progress</small></span></label>
+            <label class="option-card option-center"><input type="radio" name="minutes" value="45"><span class="option-text"><strong>45 min</strong><small>Balanced plan</small></span></label>
+            <label class="option-card option-center"><input type="radio" name="minutes" value="60"><span class="option-text"><strong>60+ min</strong><small>Accelerated</small></span></label>
+          </fieldset>
+          <p class="field-error" data-error="minutes" hidden></p>
+        </section>
+
+        <!-- Step 5 -->
+        <section class="wizard-panel" data-step="5" aria-labelledby="ob-s5" hidden>
+          <h3 id="ob-s5">Your personalized demo plan</h3>
+          <div id="ob-plan"></div>
+        </section>
+
+        <p class="privacy-note"><i data-lucide="shield-check" aria-hidden="true"></i> We never ask for sensitive personal information. Your answers are saved only in this browser.</p>
+      </div>
+
+      <footer class="modal-footer">
+        <button type="button" class="btn btn-ghost" id="ob-back">Back</button>
+        <span class="wizard-count" id="ob-count" aria-live="polite">Step 1 of 5</span>
+        <button type="button" class="btn btn-primary" id="ob-next">Continue</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <div class="toast-region" id="toasts" aria-live="polite"></div>
+</body>
+</html>
